@@ -5,15 +5,15 @@ import registration from './registration.css'
 import axios from 'axios';
 
 
-class Registration extends Component {
 
+class ResetPassword extends Component {
     constructor(props){
         super(props);
         
         this.state = {
-    name:'',
+   
     emailid:'',
-    mobileNo:'',
+   
     password:'',
     confirmPassword:''
 
@@ -21,22 +21,20 @@ class Registration extends Component {
         }
         // this.emailid
     }
-    
-    
     loginhandle = ()=>
     {
-        axios.post('http://localhost:8090/user/add',
+        axios.post('http://localhost:8090/user/reset',
         {
-            name:this.state.name,
+            
             emailid:this.state.emailid,
-            mobileNo:this.state.mobileNo,
+            
             password:this.state.password,
             confirmPassword:this.state.confirmPassword
 
     
     })
 
-       
+        
         .then(Response =>{
             console.log(Response,"Login success")
             this.props.history.push('/Login')
@@ -52,28 +50,18 @@ class Registration extends Component {
     }
     render() {
         return (
-            <div className = 'container'>
-                <form>              
-                      <h1>Registration</h1>
+            <div>
+               <form className = 'container'>              
+                      {/* <h1>Login</h1> */}
                       <div className = 'text'>
-                      {/* <label  id = "label">Name </label> */}
-                      <h4 id="name">Name :</h4>
-                      <TextField type = "text" placeholder = "Name" 
-                        onChange={event=>this.setState({name:event.target.value})}
-                      id = 'ttt'></TextField>
-                      </div>
-                      <div className = 'text'>
+                      
+                     
+                        <div className = 'text'>
                       <h4 id="emailid">EmailID :</h4>
                       <TextField type = "text" placeholder = "EmailID" 
                        onChange={event=>this.setState({emailid:event.target.value})} >
                       </TextField>
                       </div>
-                      <div className = 'text'>
-                      <h4 id="Mobile">Mobile number:</h4>                   
-                       <TextField type = "text" placeholder = "Mobile number" 
-                       onChange={event=>this.setState({mobileNo:event.target.value})}>
-                       </TextField>
-                      </div >
                       <div className = 'text'>
                       <h4 id="password">Password :</h4>
                       <TextField type = "text" placeholder = "Password" 
@@ -89,20 +77,17 @@ class Registration extends Component {
                       onChange={event=>this.setState({confirmPassword:event.target.value})}>
                       </TextField>
                       </div>
-                      <div>
-                      <Button variant="contained" color="primary" 
-                         onClick={() => this.props.history.push('/Login')} id = "signup"
+                      <div></div>
+                        <Button variant="contained" color="primary" 
+                        // onClick={() => this.props.history.push('/Registartion')} id = "signup"
                         onClick={this.loginhandle}>
-                        
-                        Signup
+                        Change Password
                         </Button>
-                        </div>
-                       
-                </form>
-                
+                      </div>
+                      </form> 
             </div>
         );
     }
 }
 
-export default Registration;
+export default ResetPassword;

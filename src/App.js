@@ -6,6 +6,9 @@ import Login from './Component/Login'
 import GetDemo from './Component/GetDemo';
 import Ref from './Component/Ref';
 import DashBoard from './Component/DashBoard';
+import Router from './Routers/Router';
+import GetAllNotes from './Component/GetAllNotes';
+
 
 function App() {
   return (
@@ -14,7 +17,9 @@ function App() {
       {/* <GetDemo></GetDemo> */}
       {/* <Ref></Ref> */}
       {/* <Registration></Registration> */}
-      <DashBoard></DashBoard>
+      {/* <DashBoard></DashBoard> */}
+      <Router></Router>
+      {/* <GetAllNotes></GetAllNotes> */}
     </div>
   );
 }

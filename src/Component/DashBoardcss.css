@@ -1,0 +1,29 @@
+/* .container {
+  padding: 100px;
+  margin: 50px 50px 50px 50px;
+display: inline-block;
+} */
+#search{
+  padding: 16px 20px;
+  margin-top: 10px;
+}
+#note{
+  padding: 16px 20px;
+  margin-top: 10px;
+}
+#close{
+  margin-top: 10px;
+
+
+}
+.getNotes{
+  padding-left: 300px;
+  padding-right: 200px;
+  padding-top: 200px;
+}
+#getNotesCards{
+  padding-right: 100px;
+  padding-left:20px;
+  padding-bottom: 20px;
+  padding-top: 20px;
+}

@@ -4,6 +4,8 @@ import { TextField } from '@material-ui/core';
 import Button from '@material-ui/core/Button'; 
 //{ Link } from '@mateterial-ui/'
 import axios from 'axios';
+import { Link } from 'react-router-dom';
+
 
 
 
@@ -19,29 +21,17 @@ class Login extends Component {
         }
         // this.emailid
     }  
-    // componentDidMount(){
-
-
-    //     axios.post('localhost:8080/user/login')
-
-    //     .then(response =>{
-    //         console.log(response)
-    //         this.setState({post:response.data})
-    //     })
-    //     .catch(error =>{
-    //         console.log(error)
-    //     })
-    // }
+    
+    
     loginhandle = ()=>
     {
         axios.post('http://localhost:8090/user/login',{emailid:this.state.emailid,password:this.state.password})
 
-        // let user = {};
-        // user.emailid = this.state.emailid;
-        // user.emailid = this.state.Password;
-        // login(LoginDto)
+        
         .then(Response =>{
             console.log(Response,"Login success")
+            console.log(Response)
+             sessionStorage.setItem("token",Response.data.result)
             //alert(Response.data.message)
         })
         .catch((error) =>
@@ -77,10 +67,15 @@ class Login extends Component {
                         Login
                         </Button>
                         <Button variant="contained" color="primary" 
-                        onClick={() => this.props.history.push('/Registration')} id = "signup">
+                        onClick={() => this.props.history.push('/Registartion')} id = "signup">
                         Signup
                         </Button>
                     </div>
+                    <div>
+                        <Link to={'/ForgetPassword'} >ForgetPassword</Link>
+                    </div>
+
+
                 </form>
                 </div>
         );

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import MenuIcon from '@material-ui/core/Menu'
-// import MenuIcon from '@material-ui/icons/Menu';
+//import MenuIcon from '@material-ui/core/Menu'
+ import MenuIcon from '@material-ui/icons/Menu';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import InputBase from '@material-ui/core/InputBase';
@@ -26,25 +26,38 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemText  from '@material-ui/core/ListItemText';
 import ListItemIcon from '@material-ui/core/List';
 import InboxIcon from '@material-ui/core/ListItem';
+import Notes from './Notes';
+import DashBoardcss from './DashBoardcss.css'
+import GetAllNotes from './GetAllNotes';
 
 
 
 
 
 
-// import MenuIcon from '@material-ui/icons/Menu';
-const [open, setOpen] = React.useState(false);
+
+
+// const [open, setOpen] = React.useState(false);
 class DashBoard extends Component {
+  constructor(props){
+    super(props);
+    
+    this.state = {
+        open:false
+    }
+    // this.emailid
+}  
+handleDrawerOpen= () =>{
+  this.setState({open:true})
+};
+handleDrawerClose= () =>{
+  this.setState({open:false})
+};
   
- handleDrawerOpen = () => {
-    setOpen(true);
-  };
 
-   handleDrawerClose = () => {
-    setOpen(false);
-  };
     
     render() {
+      const{open} = this.state
         
             return (
                 <div >
@@ -53,16 +66,19 @@ class DashBoard extends Component {
                   <IconButton
                       edge="start"
                       color="inherit"
-                      aria-label="open drawer">
+                      // aria-label="open drawer"
+                      arial-label="menu"
+                      onClick={this.handleDrawerOpen}
+                      >
                    <MenuIcon />
-                   </IconButton>
+                   </IconButton >
                      <Typography variant="h6" noWrap>
-                           Material-UI
+                           KeepNotes
                     </Typography>
                     <div>
 
-                      <div>
-                      <SearchIcon placeholder="Search…">
+                      <div  >
+                      <SearchIcon placeholder="Search..">
 
                       </SearchIcon>
 
@@ -110,9 +126,11 @@ class DashBoard extends Component {
                       </div>
                   </Toolbar>
                   </AppBar>
-                  <Drawer  variant="persistent" anchor="left">
+                  <Drawer  variant="persistent" anchor="left"
+                  open={open}>
+
                     <div>
-                  <IconButton>
+                  <IconButton onClick={this.handleDrawerClose}>
                       <ChevronLeftIcon />  <ChevronRightIcon />
                    </IconButton>
                    </div>
@@ -127,6 +145,14 @@ class DashBoard extends Component {
                        ))}
                    </List>
                   </Drawer>
+                  <div>
+                      <Notes></Notes>
+                   </div>
+                   <div>
+                     <GetAllNotes></GetAllNotes>
+                   </div>
+
+
                
                 </div>
               );
