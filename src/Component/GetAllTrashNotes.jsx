@@ -1,35 +1,29 @@
 import React, { Component } from 'react';
-import { add, getAll } from './NoteService';
+import {getTrash  } from './NoteService';
 import Card from '@material-ui/core/Card';
-import Divider from '@material-ui/core/Divider';
 import NoteOperation from './NoteOperation';
-import DashBoardcss from './DashBoardcss.css'
 
 
 
-
-
-
-class GetAllNotes extends Component {
-    constructor(props){
-        super(props);
+class GetAllTrashNotes extends Component {
+    // constructor(props){
+    //     super(props);
         
-        // this.state = {
+    //     this.state = {
             
-        //     store:[]
-        // }
-        // this.emailid
-    } 
-    componentDidMount(){
-        // this.getNotes()
-        console.log('------------------------>',this.props.data)
-    }
-    // getNotes = ()=>
+    //         store:[]
+    //     }
+    //     // this.emailid
+    // } 
+    // componentDidMount(){
+    //     this.getTrashNotes()
+    // }
+    // getTrashNotes = ()=>
     // {
         
 
-        
-    //     getAll().then(Response =>{
+    //     console.log(Response)
+    //     getTrash().then(Response =>{
     //         this.setState({
     //             store:Response.data
     //         })
@@ -49,7 +43,7 @@ class GetAllNotes extends Component {
     render() {
         return (
             <div style={{display:'flex',flexDirection:'row' ,flexWrap:'Wrap'}} className='getNotes'>
-                {this.props.data.map(o =>(
+                {this.state.store.map(o =>(
 
                     <Card id='getNotesCards'>
                         <div color='red'>
@@ -62,7 +56,7 @@ class GetAllNotes extends Component {
                        
                         <NoteOperation data={o.nid}/>
 
-
+                        {/* <div><NoteOperation></NoteOperation></div> */}
                     </Card>
                            
                     
@@ -73,9 +67,8 @@ class GetAllNotes extends Component {
                 
                 </div>
                 
-           
         );
     }
 }
 
-export default GetAllNotes;
+export default GetAllTrashNotes;

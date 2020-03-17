@@ -5,41 +5,33 @@ import Divider from '@material-ui/core/Divider';
 import NoteOperation from './NoteOperation';
 import DashBoardcss from './DashBoardcss.css'
 import { trashNote } from './NoteService';
-
-
-
-
-
+import ArchiveIcon from '@material-ui/icons/Archive';
 
 
 class TrashNotes extends Component {
     constructor(props){
         super(props);
-        
-        this.state = {
-            
-            store:[]
-        }
+      
         // this.emailid
     } 
-    componentDidMount(){
-        this.getNotes()
-    }
-    getTrash = ()=>
-    {
-        
+    // componentDidMount(){
+    //     this.getNotes()
+    // }
 
-        
-        trashNote().then(Response =>{
-            this.setState({
-                store:Response.data
-            })
+    getTrash = (id)=>
+    {console.log('get trash',id)
+        let ID= {}
+        ID.nid=id
+
+        console.log('id is',ID)
+        trashNote(ID).then(Response =>{
+            
             console.log(Response,"Done")
-            alert(Response.data.message)
+           // alert(Response.data.message)
         })
         .catch((error) =>
         {
-            alert(error.response)
+            //alert(error.response)
             console.log(error.response)
 
            // alert(Response.data.message)
@@ -49,33 +41,12 @@ class TrashNotes extends Component {
     } 
     render() {
         return (
-            <div style={{display:'flex',flexDirection:'row' ,flexWrap:'Wrap'}} className='getNotes'>
-                {this.state.store.map(o =>(
-
-                    <Card id='getNotesCards'>
-                        <div color='red'>
-                            {o.title}
-                        </div>
-                        <div>
-                            {o.description}
-
-                        </div>
-                        <div>
-                            {o.nid}
-
-                        </div>
-                        <div>
-                        <NoteOperation>
-                           
-                        </NoteOperation>
-                        </div>
-
-                    </Card>
-                ))
-
-                }
-                </div>
-                
+            <div>
+                <ArchiveIcon onClick={()=>this.getTrash(this.props.value)}></ArchiveIcon>
+                 {/* <button onClick={()=>this.getTrash(this.props.value)}>
+                    archive
+                    </button> */}
+            </div>
            
         );
     }

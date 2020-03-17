@@ -29,6 +29,12 @@ import InboxIcon from '@material-ui/core/ListItem';
 import Notes from './Notes';
 import DashBoardcss from './DashBoardcss.css'
 import GetAllNotes from './GetAllNotes';
+import GetAllTrashNotes from './GetAllTrashNotes';
+import {getTrash  } from './NoteService';
+import {getAll  } from './NoteService';
+
+
+
 
 
 
@@ -43,18 +49,67 @@ class DashBoard extends Component {
     super(props);
     
     this.state = {
-        open:false
+        open:false,
+        store:[],
+        // store1:[]
+
     }
     // this.emailid
 }  
-handleDrawerOpen= () =>{
-  this.setState({open:true})
-};
-handleDrawerClose= () =>{
-  this.setState({open:false})
-};
+    handleDrawerOpen= () =>{
+      this.setState({open:true})
+    };
+    handleDrawerClose= () =>{
+      this.setState({open:false})
+    };
+    componentDidMount(){
+      this.getNotes()
+    }
+    getNotes = ()=>
+    {
   
 
+  
+          getAll().then(Response =>{
+              this.setState({
+                store:Response.data
+              })
+              console.log(Response,"Done")
+              //alert(Response.data.message)
+          })
+          .catch((error) =>
+          {
+              alert(error.response)
+              console.log(error.response)
+
+            // alert(Response.data.message)
+          })
+
+          
+        } 
+          
+    getTrashNotes = ()=>
+    {
+        
+
+        console.log(Response)
+        getTrash().then(Response =>{
+            this.setState({
+                store:Response.data
+            })
+            console.log(Response,"Done")
+            //alert(Response.data.message)
+        })
+        .catch((error) =>
+        {
+            alert(error.response)
+            console.log(error.response)
+
+           // alert(Response.data.message)
+        })
+    
+        
+    } 
     
     render() {
       const{open} = this.state
@@ -136,22 +191,122 @@ handleDrawerClose= () =>{
                    </div>
                    <Divider></Divider>
                    <List>
+                      <div>
+                      <ListItemIcon><MailIcon /></ListItemIcon>
+                      <ListItemText >Note</ListItemText>
+                      </div>
+                      <div >
+                      <ListItemIcon><MailIcon /></ListItemIcon>
+                      <ListItemText>Reminders</ListItemText>
+                      </div>
+                      </List>
+                      <Divider />
+                      <List>
+                      <div onClick={this.getTrashNotes}  >
+                      <ListItemIcon><MailIcon /></ListItemIcon>
+                      <ListItemText >Trash</ListItemText>
+                      </div>
+                      <div >
+                      <ListItemIcon><MailIcon /></ListItemIcon>
+                      <ListItemText>Archives</ListItemText>
+                      </div>
+                      </List>
+                      <Divider />
+                                        {/* <List>
 
-                                {['All mail', 'Trash', 'Spam'].map((text, index) => (
+                                {['Note', 'reminder',].map((text, index) => (
+                              <ListItem button key={text}>
+                            <ListItemIcon>{index % 2 === 0 ? <InboxIcon onClick={<GetAllTrashNotes/>}/> : <MailIcon />}</ListItemIcon>
+                            <ListItemText primary={text} />
+                          </ListItem>
+                       ))}
+                   </List>
+                   <Divider></Divider>
+                   <List>
+
+                                {['Labels',].map((text, index) => (
                               <ListItem button key={text}>
                             <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
                             <ListItemText primary={text} />
                           </ListItem>
                        ))}
                    </List>
+                   <Divider></Divider> {this.props.data.map(o =>(
+
+                    <Card id='getNotesCards'>
+                        <div color='red'>
+                            {o.title}
+                        </div>
+                        <div>
+                            {o.description}
+
+                        </div>
+                       
+                        <NoteOperation data={o.nid}/>
+
+
+                    </Card>
+                           
+                    
+                ))
+    }
+
+
+                                {['Edit Label'].map((text, index) => (
+                              <ListItem button key={text}>
+                            <ListItemIcon {this.props.data.map(o =>(
+
+                    <Card id='getNotesCards'>
+                        <div color='red'>
+                            {o.title}
+                        </div>
+                        <div>
+                            {o.description}
+
+                        </div>
+                       
+                        <NoteOperation data={o.nid}/>
+
+
+                    </Card>
+                           
+                    
+                ))
+    }>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+                            <ListItemText primary={text} />
+                          </ListItem>
+                       ))}
+                   </List>
+                   <Divider></Divider>
+                   <List>
+
+                                {['Trash',].map((text, index) => (
+                              <ListItem button key={text}>
+                            {/* <ListItemIcon>{index % 2 === 0 ? <InboxIcon  /> : <MailIcon />}</ListItemIcon> */}
+                            {/* <ListItemText primary={text} />
+                          </ListItem>
+                       ))}
+                   </List>
+                   <Divider></Divider>
+                   <List>
+
+                                {['Archive',].map((text, index) => (
+                              <ListItem button key={text}>
+                            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+                            <ListItemText primary={text} />
+                          </ListItem>
+                       ))}
+                   </List> */} 
+                
+                
                   </Drawer>
                   <div>
                       <Notes></Notes>
                    </div>
                    <div>
-                     <GetAllNotes></GetAllNotes>
+                     <GetAllNotes data={this.state.store}></GetAllNotes>
                    </div>
-
+                  
 
                
                 </div>

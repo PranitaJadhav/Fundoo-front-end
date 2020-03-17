@@ -35,7 +35,7 @@ class Note extends Component {
                     <TextField 
                     type = "text" placeholder = "Description"
                     onChange={event=>this.setState({title:event.target.value})}/>
-                    </div>
+            </div>
                     <div>
                     <TextField type = "text" placeholder = "Description"
                     onChange={event=>this.setState({description:event.target.value})} />

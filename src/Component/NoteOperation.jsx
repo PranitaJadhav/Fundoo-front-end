@@ -9,6 +9,15 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 import Button from '@material-ui/core/Button';
 import Note from './Notes';
 import TrashNotes from './TrashNotes'
+import { trashNote } from './NoteService';
+import ArchiveNotes from './ArchiveNotes'
+import PinUnpin from './PinUnpin'
+import NoteOperationcss from './NoteOperationcss.css'
+import registration from './registration.css'
+import { ListItemIcon } from '@material-ui/core';
+
+
+
 
 
 
@@ -21,16 +30,24 @@ class NoteOperation extends Component {
     render() {
         return (
             <div>
-                <AddAlertIcon></AddAlertIcon>
-                    <PersonAddIcon></PersonAddIcon>
-                    <PaletteIcon></PaletteIcon>
-                    <ImageIcon></ImageIcon>
-                    <ArchiveIcon onClick={this.props.function}>
+              <ListItemIcon>  <AddAlertIcon></AddAlertIcon>
+              </ListItemIcon>
+                   <ListItemIcon> <PersonAddIcon className="personaddicon"></PersonAddIcon>
+                   </ListItemIcon>
                     
-                    </ArchiveIcon>
+                    <ListItemIcon>  <PinUnpin value={this.props.data}></PinUnpin>
+                    </ListItemIcon>
+
+                    <ListItemIcon>  <ArchiveNotes value={this.props.data}></ArchiveNotes>
+                    </ListItemIcon>
+                    <ListItemIcon>
+                    <TrashNotes value={this.props.data}> </TrashNotes>
+                    </ListItemIcon>
+                    <ListItemIcon>
                     <MoreVertIcon>
                         
                     </MoreVertIcon>
+                    </ListItemIcon>
                     
                     <Button variant="contained"  id='close'
                        onClick={this.props.function}>

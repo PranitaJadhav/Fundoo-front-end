@@ -9,6 +9,14 @@ import ResetPassword from '../Component/ResetPassword';
 import NoteOperation from '../Component/NoteOperation';
 import GetAllNotes from '../Component/GetAllNotes';
 import TrashNotes from '../Component/TrashNotes';
+import ArchiveNotes from '../Component/ArchiveNotes';
+import PinUnpin from '../Component/PinUnpin';
+import GetAllTrashNotes from '../Component/GetAllTrashNotes';
+import NoteEdit from '../Component/NoteEdit';
+
+
+
+
 
 
 
@@ -35,9 +43,14 @@ export default function Router(){
             <Route path = {'/NoteOperation'} exact component={NoteOperation}></Route>
             <Route path = {'/GetAllNotes'} exact component={GetAllNotes}></Route>
             <Route path = {'/TrashNotes'} exact component={TrashNotes}></Route>
-
+            <Route path = {'/ArchiveNotes'} exact component={ArchiveNotes}></Route>
+            {/* <Route path = {'/PinUnpin'} exact component={PinUnpin}></Route> */}
+            <Route path = {'/GetAllTrashNotes'} exact component={GetAllTrashNotes}></Route>
+            <Route path = {'/NoteEdit'} exact component={NoteEdit}></Route>
 
             
+            
+             
 
 
         </Switch>
