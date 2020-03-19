@@ -13,6 +13,12 @@ import ArchiveNotes from '../Component/ArchiveNotes';
 import PinUnpin from '../Component/PinUnpin';
 import GetAllTrashNotes from '../Component/GetAllTrashNotes';
 import NoteEdit from '../Component/NoteEdit';
+import GetAllArchiveNotes from '../Component/GetAllArchiveNotes';
+import Unarchive from '../Component/Unarchive';
+import ArchiveNoteOperation from '../Component/ArchiveNoteOperation';
+
+
+
 
 
 
@@ -48,11 +54,13 @@ export default function Router(){
             <Route path = {'/GetAllTrashNotes'} exact component={GetAllTrashNotes}></Route>
             <Route path = {'/NoteEdit'} exact component={NoteEdit}></Route>
 
-            
-            
-             
+            <Route path = {'/GetAllArchiveNotes'} exact component={GetAllArchiveNotes}></Route>
+            <Route path = {'/Unarchive'} exact component={Unarchive}></Route>
+            <Route path = {'/ArchiveNoteOperation'} exact component={ArchiveNoteOperation}></Route>
 
-
+            
+              
+            
         </Switch>
         </BrowserRouter>
     );

@@ -32,18 +32,9 @@ import GetAllNotes from './GetAllNotes';
 import GetAllTrashNotes from './GetAllTrashNotes';
 import {getTrash  } from './NoteService';
 import {getAll  } from './NoteService';
+import {getArchivesNotes} from './NoteService';
+import { red } from '@material-ui/core/colors';
 
-
-
-
-
-
-
-
-
-
-
-// const [open, setOpen] = React.useState(false);
 class DashBoard extends Component {
   constructor(props){
     super(props);
@@ -52,8 +43,7 @@ class DashBoard extends Component {
         open:false,
         store:[],
         // store1:[]
-
-    }
+   }
     // this.emailid
 }  
     handleDrawerOpen= () =>{
@@ -62,55 +52,63 @@ class DashBoard extends Component {
     handleDrawerClose= () =>{
       this.setState({open:false})
     };
-    componentDidMount(){
-      this.getNotes()
-    }
-    getNotes = ()=>
-    {
-  
+    // componentDidMount(){
+    //   this.getNotes()
+    // }
+  //   getNotes = ()=>
+  //   {
+  //       getAll().then(Response =>{
+  //             this.setState({
+  //               store:Response.data.result
+  //             })
+  //             console.log(Response,"Done")
+  //             //alert(Response.data.message)
+  //         })
+  //         .catch((error) =>
+  //         {
+  //             alert(error.response)
+  //             console.log(error.response)
 
-  
-          getAll().then(Response =>{
-              this.setState({
-                store:Response.data
-              })
-              console.log(Response,"Done")
-              //alert(Response.data.message)
-          })
-          .catch((error) =>
-          {
-              alert(error.response)
-              console.log(error.response)
-
-            // alert(Response.data.message)
-          })
-
+  //           // alert(Response.data.message)
+  //         })
+  // } 
           
-        } 
+  //   getTrashNotes = ()=>
+  //   {
+  //        console.log(Response)
+  //       getTrash().then(Response =>{
+  //           this.setState({
+  //               store:Response.data.result
+  //           })
+  //           console.log(Response,"Done")
+  //           //alert(Response.data.message)
+  //       })
+  //       .catch((error) =>
+  //       {
+  //           alert(error.response)
+  //           console.log(error.response)
+
+  //          // alert(Response.data.message)
+  //       })
+  //    } 
+  //   getAllArchiveNotes = ()=>
+  //   {
+  //       getArchivesNotes().then(Response =>{
+  //             this.setState({
+  //               store:Response.data.result
+  //             })
+  //             console.log(Response,"Done")
+  //             //alert(Response.data.message)
+  //         })
+  //         .catch((error) =>
+  //         {
+  //             alert(error.response)
+  //             console.log(error.response)
+
+  //           // alert(Response.data.message)
+  //         })
+  //  } 
           
-    getTrashNotes = ()=>
-    {
-        
-
-        console.log(Response)
-        getTrash().then(Response =>{
-            this.setState({
-                store:Response.data
-            })
-            console.log(Response,"Done")
-            //alert(Response.data.message)
-        })
-        .catch((error) =>
-        {
-            alert(error.response)
-            console.log(error.response)
-
-           // alert(Response.data.message)
-        })
-    
-        
-    } 
-    
     render() {
       const{open} = this.state
         
@@ -118,7 +116,7 @@ class DashBoard extends Component {
                 <div >
                   <AppBar position="static">
                   <Toolbar>
-                  <IconButton
+                  <IconButton id='logo'
                       edge="start"
                       color="inherit"
                       // aria-label="open drawer"
@@ -130,31 +128,34 @@ class DashBoard extends Component {
                      <Typography variant="h6" noWrap>
                            KeepNotes
                     </Typography>
-                    <div>
 
-                      <div  >
-                      <SearchIcon placeholder="Search..">
 
-                      </SearchIcon>
+                    {/* <div> */}
+                       <div>
+                            <SearchIcon placeholder="Search.." id='searchLogo'>
+                                      </SearchIcon>
+                          </div>
+                          <div>                      
+                            <InputBase id='searchBar'></InputBase>
+                            </div>
 
-                      </div>
-                      <InputBase></InputBase>
-                    </div>
-                       <div></div>
+                    {/* </div> */}
+                    
+                       {/* <div></div> */}
                        <div>
                        <IconButton  color="inherit">
                         
-                       <MailIcon />
+                       {/* <MailIcon /> */}
                       
-                        </IconButton>
-                        <IconButton  color="inherit">
+                        {/* </IconButton>
+                        <IconButton  color="inherit"> */}
                         {/* <Badge badgeContent={4} color="secondary"> */}
-                       <MailIcon />
+                       {/* <MailIcon /> */}
                        {/* </Badge> */}
-                        </IconButton>
-                        <IconButton  color="inherit">
+                        {/* </IconButton>
+                        <IconButton  color="inherit"> */}
                        {/* <Badge badgeContent={17} color="secondary"> */}
-                        <NotificationsIcon />
+                        {/* <NotificationsIcon /> */}
                        {/* </Badge> */}
                           </IconButton>
                         <IconButton
@@ -165,7 +166,7 @@ class DashBoard extends Component {
                             // onClick={handleProfileMenuOpen}
                             color="inherit"
                           >
-                            <AccountCircle />
+                            <AccountCircle id='personLogo' />
                           </IconButton>                       
                       </div>
                       <div>
@@ -181,8 +182,13 @@ class DashBoard extends Component {
                       </div>
                   </Toolbar>
                   </AppBar>
-                  <Drawer  variant="persistent" anchor="left"
-                  open={open}>
+                  <div style={
+                    {
+                      backgroundColor:'red'
+                    }
+                  }>                 
+                     <Drawer  variant="persistent" anchor="left" 
+                  open={open}style={{color:"red"}}>
 
                     <div>
                   <IconButton onClick={this.handleDrawerClose}>
@@ -191,129 +197,48 @@ class DashBoard extends Component {
                    </div>
                    <Divider></Divider>
                    <List>
-                      <div>
-                      <ListItemIcon><MailIcon /></ListItemIcon>
-                      <ListItemText >Note</ListItemText>
+
+                      <div id='noteicon'>
+                          <div >
+                          <ListItemIcon>
+                            <MailIcon />
+                            </ListItemIcon>
+                          </div>
+
+                            <div>
+                            <ListItemText >Note</ListItemText>
+                            </div>
                       </div>
+
                       <div >
-                      <ListItemIcon><MailIcon /></ListItemIcon>
-                      <ListItemText>Reminders</ListItemText>
+                        <ListItemIcon><MailIcon /></ListItemIcon>
+                        <ListItemText>Reminders</ListItemText>
                       </div>
                       </List>
                       <Divider />
                       <List>
-                      <div onClick={this.getTrashNotes}  >
-                      <ListItemIcon><MailIcon /></ListItemIcon>
-                      <ListItemText >Trash</ListItemText>
-                      </div>
-                      <div >
-                      <ListItemIcon><MailIcon /></ListItemIcon>
-                      <ListItemText>Archives</ListItemText>
-                      </div>
+                            <div >
+                            <ListItemIcon><MailIcon /></ListItemIcon>
+                            <ListItemText >Trash</ListItemText>
+                            </div>
+                            <div  >
+                            <ListItemIcon><MailIcon /></ListItemIcon>
+                            <ListItemText>Archives</ListItemText>
+                            </div>
                       </List>
                       <Divider />
-                                        {/* <List>
-
-                                {['Note', 'reminder',].map((text, index) => (
-                              <ListItem button key={text}>
-                            <ListItemIcon>{index % 2 === 0 ? <InboxIcon onClick={<GetAllTrashNotes/>}/> : <MailIcon />}</ListItemIcon>
-                            <ListItemText primary={text} />
-                          </ListItem>
-                       ))}
-                   </List>
-                   <Divider></Divider>
-                   <List>
-
-                                {['Labels',].map((text, index) => (
-                              <ListItem button key={text}>
-                            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-                            <ListItemText primary={text} />
-                          </ListItem>
-                       ))}
-                   </List>
-                   <Divider></Divider> {this.props.data.map(o =>(
-
-                    <Card id='getNotesCards'>
-                        <div color='red'>
-                            {o.title}
-                        </div>
-                        <div>
-                            {o.description}
-
-                        </div>
-                       
-                        <NoteOperation data={o.nid}/>
-
-
-                    </Card>
-                           
-                    
-                ))
-    }
-
-
-                                {['Edit Label'].map((text, index) => (
-                              <ListItem button key={text}>
-                            <ListItemIcon {this.props.data.map(o =>(
-
-                    <Card id='getNotesCards'>
-                        <div color='red'>
-                            {o.title}
-                        </div>
-                        <div>
-                            {o.description}
-
-                        </div>
-                       
-                        <NoteOperation data={o.nid}/>
-
-
-                    </Card>
-                           
-                    
-                ))
-    }>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-                            <ListItemText primary={text} />
-                          </ListItem>
-                       ))}
-                   </List>
-                   <Divider></Divider>
-                   <List>
-
-                                {['Trash',].map((text, index) => (
-                              <ListItem button key={text}>
-                            {/* <ListItemIcon>{index % 2 === 0 ? <InboxIcon  /> : <MailIcon />}</ListItemIcon> */}
-                            {/* <ListItemText primary={text} />
-                          </ListItem>
-                       ))}
-                   </List>
-                   <Divider></Divider>
-                   <List>
-
-                                {['Archive',].map((text, index) => (
-                              <ListItem button key={text}>
-                            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-                            <ListItemText primary={text} />
-                          </ListItem>
-                       ))}
-                   </List> */} 
-                
                 
                   </Drawer>
+                  </div>
+
                   <div>
                       <Notes></Notes>
                    </div>
                    <div>
                      <GetAllNotes data={this.state.store}></GetAllNotes>
+                      </div>
                    </div>
-                  
-
-               
-                </div>
               );
             }
-        
-    }
-
-
+        }
 export default DashBoard;

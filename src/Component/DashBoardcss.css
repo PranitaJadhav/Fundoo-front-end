@@ -9,21 +9,106 @@ display: inline-block;
 }
 #note{
   padding: 16px 20px;
-  margin-top: 10px;
+  margin-top: 15px;
+  box-shadow: tomato;
+  /* background-color: tomato; */
+text-align: left;
+  width: 500px;
 }
 #close{
   margin-top: 10px;
+  margin-bottom: 15px;
 
 
 }
 .getNotes{
   padding-left: 300px;
   padding-right: 200px;
-  padding-top: 200px;
+  padding-top: 200px;                                                                                                                                                                                                                                                                 
+  padding: 16px 20px;
+  margin-top: 15px;
+  box-shadow: tomato;
+  /* background-color: tomato; */
+text-align: left;
+  width: 500px;
+
 }
 #getNotesCards{
   padding-right: 100px;
   padding-left:20px;
   padding-bottom: 20px;
   padding-top: 20px;
+}
+#logo{
+  border-radius: 50%;
+    /* display: inline-block; */
+    margin: 4px 40px 30px 10px;
+    padding: 12px;
+    /* overflow: hidden; */
+    vertical-align: middle;
+    cursor: pointer;
+    height: 24px;
+    width: 24px;
+}
+#searchLogo{
+  color: white;
+    /* opacity: 1; */
+    cursor: pointer;
+    padding-top: 25px;
+    margin: 3px 3px 20px 10px;
+    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: hidden;
+
+}
+#searchBar{
+  border: none;
+    font: normal 16px Google Sans,Roboto,RobotoDraft,Helvetica,Arial,sans-serif;
+    /* color: white; */
+    /* width: 60%; */
+    /* padding-left: 100px; */
+    background-color: tomato;
+    padding: 10px 10px 10px 10px;
+    background: transparent;
+    border: none;
+    font: normal 16px Google Sans,Roboto,RobotoDraft,Helvetica,Arial,sans-serif;
+    -webkit-font-variant-ligatures: none;
+    font-variant-ligatures: none;
+    height: 35px;
+    outline: none;
+    /* width: 100%; */
+    -webkit-box-sizing: border-box;
+    width: 650px;
+    /* box-sizing: border-box; */
+}
+#personLogo{
+  margin-left: 50px  ;
+  padding-bottom: 5px;
+  /* margin-bottom: 5px; */
+  height: 24px;
+
+
+}
+#noteicon{
+  display: block;
+  background-color: #feefc3;
+    border-radius: 0 25px 25px 0;
+    color: #202124;
+    letter-spacing: .01785714em;
+    font-family: 'Google Sans',Roboto,Arial,sans-serif;
+    font-size: .875rem;
+    font-weight: 500;
+    line-height: 1.25rem;
+    padding-left: 23px;
+}
+#drawer{
+  /* top: 1; */
+  width: 100%;
+  background-color: tomato;
+}
+#card{
+  width: 500px;
+  align-content: center;
+  margin-left: 400px;
+  border-radius: 40px;
 }

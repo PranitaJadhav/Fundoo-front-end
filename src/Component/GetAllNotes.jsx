@@ -14,42 +14,43 @@ class GetAllNotes extends Component {
     constructor(props){
         super(props);
         
-        // this.state = {
+        this.state = {
             
-        //     store:[]
-        // }
+            store:[]
+        }
         // this.emailid
     } 
     componentDidMount(){
-        // this.getNotes()
-        console.log('------------------------>',this.props.data)
+        this.getNotes()
+        console.log('------------------------>')
     }
-    // getNotes = ()=>
-    // {
+    getNotes = ()=>
+    {
         
-
+           console.log('heyyyy') 
         
-    //     getAll().then(Response =>{
-    //         this.setState({
-    //             store:Response.data
-    //         })
-    //         console.log(Response,"Done")
-    //         //alert(Response.data.message)
-    //     })
-    //     .catch((error) =>
-    //     {
-    //         alert(error.response)
-    //         console.log(error.response)
+        getAll().then(Response =>{
+            this.setState({
+                store:Response.data
+            })
 
-    //        // alert(Response.data.message)
-    //     })
+            console.log(Response,"Done")
+            //alert(Response.data.message)
+        })
+        .catch((error) =>
+        {
+            alert(error.response)
+            console.log(error.response)
+
+           // alert(Response.data.message)
+        })
     
         
-    // } 
+    } 
     render() {
         return (
-            <div style={{display:'flex',flexDirection:'row' ,flexWrap:'Wrap'}} className='getNotes'>
-                {this.props.data.map(o =>(
+            <div style={{display:'flex',flexDirection:'row' ,flexWrap:'Wrap'}} className='getNotes' >
+                {this.state.store.map(o =>(
 
                     <Card id='getNotesCards'>
                         <div color='red'>

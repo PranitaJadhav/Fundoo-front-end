@@ -34,6 +34,14 @@ export function isArchive(Notes) {
 }
 });
 }
+export function isUnArchive(Notes) {
+    return axios.post('http://localhost:8090/notes/Unarchive',Notes
+, {headers : {
+    "token" :sessionStorage.getItem('token'), 
+"Content-Type":"application/json;charset=utf-8"
+}
+});
+}
 export function isPinUnpin(Notes) {
     return axios.post('http://localhost:8090/notes/pin',Notes
 , {headers : {
@@ -50,3 +58,28 @@ export function getTrash() {
 }
 });
 } 
+export function unTrashNote() {
+    return axios.get('http://localhost:8090/notes/deleteTrash'
+, {headers : {
+    "token" :sessionStorage.getItem('token'), 
+"Content-Type":"application/json;charset=utf-8"
+}
+});
+} 
+export function deleteTrash() {
+    return axios.get('http://localhost:8090/notes/unTrash'
+, {headers : {
+    "token" :sessionStorage.getItem('token'), 
+"Content-Type":"application/json;charset=utf-8"
+}
+});
+} 
+export function getArchivesNotes() {
+    return axios.get('http://localhost:8090/notes/getArchivesNotes'
+, {headers : {
+    "token" :sessionStorage.getItem('token'), 
+"Content-Type":"application/json;charset=utf-8"
+}
+});
+} 
+

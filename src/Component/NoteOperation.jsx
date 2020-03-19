@@ -17,21 +17,41 @@ import registration from './registration.css'
 import { ListItemIcon } from '@material-ui/core';
 
 
-
+const Tooltip = () => <div>tooltip</div>
 
 
 
 class NoteOperation extends Component {
     constructor(props){
         super(props);
+        this.state = {
+            hover:false
+        }
         // this.createNote=this.createNote.bind(this);
 
+       
     }
+    mouseOver= () =>{
+        this.setState({hover:true})
+      };
+      mouseLeave= () =>{
+        this.setState({hover:false})
+      };
+    
+      
     render() {
         return (
-            <div>
-              <ListItemIcon>  <AddAlertIcon></AddAlertIcon>
-              </ListItemIcon>
+            <div >
+                
+              <ListItemIcon> { this.setState.hover ? <Tooltip/>:null} <AddAlertIcon 
+                                     onMouseOver={this.mouseOver}
+                                    onMouseOut={this.mouseLeave}>
+
+          </AddAlertIcon>
+              </ListItemIcon>   
+
+            
+              
                    <ListItemIcon> <PersonAddIcon className="personaddicon"></PersonAddIcon>
                    </ListItemIcon>
                     
@@ -55,7 +75,7 @@ class NoteOperation extends Component {
                         </Button>
                        
 
-                   
+                       
                 
             </div>
         );

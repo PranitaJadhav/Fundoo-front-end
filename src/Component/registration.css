@@ -57,5 +57,17 @@
   }
   #signup{
     align-content: center;
+    margin-left: 20px;
+    margin-top: 20px;
+    width: 30%;
+
+
+  }
+  #login{
+    /* margin-left: 250px; */
+    margin-top: 20px;
+    width: 30%;
+
+
   }
   

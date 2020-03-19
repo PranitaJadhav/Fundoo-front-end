@@ -24,19 +24,22 @@ class Login extends Component {
     
     
     loginhandle = ()=>
-    {
-        axios.post('http://localhost:8090/user/login',{emailid:this.state.emailid,password:this.state.password})
-
-        
-        .then(Response =>{
-            console.log(Response,"Login success")
+    { 
+    
+        axios.post('http://localhost:8090/user/login',{emailid:this.state.emailid,password:this.state.password})           .then(Response => {
             console.log(Response)
-             sessionStorage.setItem("token",Response.data.result)
-            //alert(Response.data.message)
+            console.log("Login success")
+
+            sessionStorage.setItem("token",Response.data.result)
+            // localStorage.setItem("userToken",Response.result.data)
+
+            alert(Response.data.message)
         })
         .catch((error) =>
         {
-           // alert(Response.data.message)
+            console.log(error);
+            
+            // alert(Response.data.message)
         })
     
         
@@ -62,8 +65,12 @@ class Login extends Component {
                      </TextField>
                       </div>
                       <div>
+                      <div>
+                        <Link to={'/ForgetPassword'} >ForgetPassword</Link>
+                    </div>
                       <Button variant="contained" color="primary" 
-                       onClick={this.loginhandle}>
+                       onClick={this.loginhandle} id='login'
+                       >
                         Login
                         </Button>
                         <Button variant="contained" color="primary" 
@@ -71,9 +78,7 @@ class Login extends Component {
                         Signup
                         </Button>
                     </div>
-                    <div>
-                        <Link to={'/ForgetPassword'} >ForgetPassword</Link>
-                    </div>
+                    
 
 
                 </form>

@@ -18,14 +18,14 @@ class ArchiveNotes extends Component {
         // }
     
         getArchive = (id)=>
-        {console.log('get trash',id)
+        {console.log('get archive',id)
             let ID= {}
             ID.nid=id
     
             console.log('id is',ID)
             isArchive(ID).then(Response =>{
                 
-                console.log(Response,"Done")
+                console.log(Response,"archived")
                // alert(Response.data.message)
             })
             .catch((error) =>

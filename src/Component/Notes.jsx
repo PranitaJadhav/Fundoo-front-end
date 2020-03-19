@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container } from '@material-ui/core';
+import { Container, InputBase, Card } from '@material-ui/core';
 import { TextField } from '@material-ui/core';
 import NoteOperation from './NoteOperation';
 import axios from 'axios';
@@ -59,12 +59,13 @@ class Notes extends Component {
 
     render() {
         return (
-            <Container>
+            // <Container>
             <div>
-                {this.state.open ?
+                <Card id='card                                                                                                                                                                  '>
+                                  {this.state.open ?
                 <div>
                     
-                    <TextField 
+                    <InputBase
                     type = "text" placeholder = "title" id='note'
                     onChange={event=>this.setState({titles:event.target.value})}/>
                     
@@ -73,7 +74,7 @@ class Notes extends Component {
                  :null}
 
                     <div>
-                    <TextField type = "text" placeholder = "take a note" id='note'
+                    <InputBase type = "text" placeholder = "take a note" id='note'
                     onChange={event=>this.setState({descriptions:event.target.value})}
                     onClick={this.openFile} />
                     
@@ -89,12 +90,13 @@ class Notes extends Component {
                    </NoteOperation>
                    
                     
+   
                  </div>
                  
                  :null}
-                    
+                    </Card>
                  </div>
-            </Container>
+            // </Container>
         );
     }
 }
